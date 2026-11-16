@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0
+## 0.1.1
 
 - The DiscoveryONE node: leads, customers and follow-ups (create, update, get, get many; complete a follow-up), and
   estimates, projects, invoices, payments, warranty requests and records of a company's own types (get, get many).
