@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-discoveryone",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "DiscoveryONE for n8n: start workflows on DiscoveryONE events, and read and write leads, customers, follow-ups and more.",
 	"license": "MIT",
 	"homepage": "https://github.com/jared-discovery/DiscoveryN8n",

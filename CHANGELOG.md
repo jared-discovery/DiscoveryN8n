@@ -1,6 +1,11 @@
 # Changelog
 
-## 0.1.2
+## 0.1.3
+
+- Released through npm's staged publishing: each version is staged by GitHub Actions, with its provenance, and goes
+  live when a maintainer approves it.
+
+## 0.1.2 (never on npm: its publish run was refused)
 
 - The README has three example workflows: a call-back for every new lead, a website form that makes a lead, and a
   message to the team when an estimate is signed.
