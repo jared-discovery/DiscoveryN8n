@@ -1,0 +1,9 @@
+{
+	"comment": "DiscoveryONE's webhook signature over a delivery shaped as the real envelope. DiscoveryONE's own test suite holds its signer to exactly these headers, so test/signature.test.mjs checks the node against what DiscoveryONE really sends. (The Zapier app verifies the same vector.)",
+	"secret": "whsec_test_n8n_vector_0123456789abcdef",
+	"previousSecret": "whsec_test_n8n_vector_previous_fedcba98",
+	"t": 1763000000,
+	"body": "{\"id\":\"7f3c9a2e-1b4d-4e8a-9c21-5d6e7f809a1b\",\"sequence\":42,\"type\":\"lead.created\",\"occurredAt\":\"2025-11-13T02:13:20Z\",\"resource\":{\"type\":\"leads\",\"id\":184,\"url\":\"https://discoveryone.app/api/v1/leads/184\"}}",
+	"header": "t=1763000000,v1=7cd49cd896ac59102d44f24d91772cb825c4ee1daad6ef2ff100a9cc62bd64aa",
+	"rotationHeader": "t=1763000000,v1=7cd49cd896ac59102d44f24d91772cb825c4ee1daad6ef2ff100a9cc62bd64aa,v1=448e955add3672235a85b4984d3fe2a865906d76d57526050d9d70a840bb2a7c"
+}
