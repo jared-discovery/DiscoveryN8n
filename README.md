@@ -11,6 +11,7 @@ platform.
 - [Credentials](#credentials)
 - [Operations](#operations)
 - [Trigger](#trigger)
+- [Example workflows](#example-workflows)
 - [Compatibility](#compatibility)
 - [Usage](#usage)
 - [Resources](#resources)
@@ -72,6 +73,42 @@ added or changed.
 - A key hears only events about records it may read.
 - DiscoveryONE sends events only to `https://` addresses, so n8n needs a public https address (n8n Cloud has one; a
   self-hosted n8n sets `WEBHOOK_URL`).
+
+## Example workflows
+
+Three small workflows to start from. Each says which ticks its key needs.
+
+### Call back every new lead
+
+When a lead comes in, a call-back for the next day goes on the follow-up list.
+
+1. **DiscoveryONE Trigger**: Events *Lead Created*.
+2. **DiscoveryONE**: Resource *Follow-Up*, Operation *Create*.
+   - Related To: *Lead*. Related ID: `{{ $json.resource.id }}`
+   - Title: `Call {{ $json.record.name }}`
+   - Due Date: `{{ $today.plus({ days: 1 }).toISODate() }}`
+   - Additional Fields → Kind: *Call*
+
+Key: View Leads, What it may change → follow-ups, and Connect apps.
+
+### A website form makes a lead
+
+1. **n8n Form Trigger** with the fields *Name*, *Email*, *Phone* and *Message*.
+2. **DiscoveryONE**: Resource *Lead*, Operation *Create*.
+   - Name: `{{ $json.Name }}`
+   - Additional Fields → Email: `{{ $json.Email }}`, Phone: `{{ $json.Phone }}`, Source: `Website`,
+     Notes: `{{ $json.Message }}`
+
+Key: What it may change → leads. The lead then starts any workflow on *Lead Created*, like the one above.
+
+### Tell the team when an estimate is signed
+
+1. **DiscoveryONE Trigger**: Events *Estimate Signed*.
+2. **Slack** (or **Microsoft Teams**): send a message to your sales channel:
+   `Estimate {{ $json.record.number }} was signed: {{ $json.record.total }}`
+
+Key: View Estimates and Connect apps. The total comes through only if the key may see job prices; otherwise it is
+empty.
 
 ## Compatibility
 
